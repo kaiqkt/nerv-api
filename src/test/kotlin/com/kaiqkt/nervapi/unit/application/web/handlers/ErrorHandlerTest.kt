@@ -1,10 +1,10 @@
-package ${package}.unit.application.web.handlers
+package com.kaiqkt.nervapi.unit.application.web.handlers
 
-import ${package}.application.exceptions.InvalidRequestException
-import ${package}.application.web.handlers.ErrorHandler
-import ${package}.application.web.responses.ErrorV1
-import ${package}.domain.exceptions.DomainException
-import ${package}.domain.exceptions.ErrorType
+import com.kaiqkt.nervapi.application.exceptions.InvalidRequestException
+import com.kaiqkt.nervapi.application.web.handlers.ErrorHandler
+import com.kaiqkt.nervapi.application.web.responses.ErrorV1
+import com.kaiqkt.nervapi.domain.exceptions.DomainException
+import com.kaiqkt.nervapi.domain.exceptions.ErrorType
 import io.mockk.every
 import io.mockk.mockk
 import jakarta.validation.ConstraintViolation

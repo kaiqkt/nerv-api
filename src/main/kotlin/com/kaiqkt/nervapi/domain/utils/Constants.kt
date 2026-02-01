@@ -1,4 +1,4 @@
-package ${package}.domain.utils
+package com.kaiqkt.nervapi.domain.utils
 
 import org.slf4j.MDC
 import java.util.UUID

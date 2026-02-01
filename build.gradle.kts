@@ -1,8 +1,8 @@
 plugins {
-	kotlin("jvm") version "2.2.21"
-	kotlin("plugin.spring") version "2.2.21"
-	id("org.springframework.boot") version "4.0.0"
-	id("io.spring.dependency-management") version "1.1.7"
+    kotlin("jvm") version "2.2.21"
+    kotlin("plugin.spring") version "2.2.21"
+    id("org.springframework.boot") version "4.0.0"
+    id("io.spring.dependency-management") version "1.1.7"
     id("jacoco")
     id("org.jlleitschuh.gradle.ktlint") version "13.0.0"
 }
@@ -12,9 +12,9 @@ version = "0.0.1-SNAPSHOT"
 description = "Demo project for Spring Boot"
 
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
-	}
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
 
 tasks.named<Jar>("bootJar") {
@@ -22,7 +22,7 @@ tasks.named<Jar>("bootJar") {
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 jacoco {
@@ -33,12 +33,11 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.springframework.boot:spring-boot-starter-validation")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("net.logstash.logback:logstash-logback-encoder:9.0")
     implementation("ch.qos.logback:logback-classic:1.5.22")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("io.micrometer:micrometer-registry-prometheus")
-
 
     testImplementation("org.mock-server:mockserver-netty-no-dependencies:5.15.0")
     testImplementation("org.mock-server:mockserver-client-java-no-dependencies:5.15.0") {
@@ -47,30 +46,30 @@ dependencies {
     testImplementation("io.rest-assured:rest-assured:5.5.6")
     testImplementation("org.testcontainers:junit-jupiter:1.21.3")
     testImplementation("io.mockk:mockk:1.14.6")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 kotlin {
-	compilerOptions {
-		freeCompilerArgs.addAll("-Xjsr305=strict", "-Xannotation-default-target=param-property")
-	}
+    compilerOptions {
+        freeCompilerArgs.addAll("-Xjsr305=strict", "-Xannotation-default-target=param-property")
+    }
 }
 
 tasks.withType<Test> {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
 
 val excludePackages: List<String> by extra {
     listOf(
-        "com/kaiqkt/${artifactId}/Application*",
-        "com/kaiqkt/${artifactId}/application/config/*",
-        "com/kaiqkt/${artifactId}/application/web/requests/*",
-        "com/kaiqkt/${artifactId}/application/web/responses/*",
-        "com/kaiqkt/${artifactId}/domain/models/*",
-        "com/kaiqkt/${artifactId}/domain/dtos/*",
-        "com/kaiqkt/${artifactId}/domain/utils/*",
+        "com/kaiqkt/nervapi/Application*",
+        "com/kaiqkt/nervapi/application/config/*",
+        "com/kaiqkt/nervapi/application/web/requests/*",
+        "com/kaiqkt/nervapi/application/web/responses/*",
+        "com/kaiqkt/nervapi/domain/models/*",
+        "com/kaiqkt/nervapi/domain/dtos/*",
+        "com/kaiqkt/nervapi/domain/utils/*",
     )
 }
 
