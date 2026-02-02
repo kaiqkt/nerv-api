@@ -8,6 +8,12 @@ object Constants {
         val requestId = MDC.get("request_id") ?: UUID.randomUUID().toString()
     }
 
+    object Metrics {
+        const val STATUS = "status"
+        const val CONFLICT = "conflict"
+        const val CREATED = "created"
+    }
+
     object Keys
 
     object Headers

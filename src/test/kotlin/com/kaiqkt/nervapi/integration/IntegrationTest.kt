@@ -1,6 +1,7 @@
 package com.kaiqkt.nervapi.integration
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.kaiqkt.nervapi.domain.repositories.ProjectRepository
 import io.restassured.RestAssured
 import io.restassured.config.ObjectMapperConfig
 import io.restassured.mapper.ObjectMapperType
@@ -8,7 +9,6 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.TestInstance
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.server.LocalServerPort
 import org.testcontainers.junit.jupiter.Testcontainers
@@ -20,17 +20,11 @@ class IntegrationTest {
     @LocalServerPort
     var port: Int = 0
 
-    @field:Value("\${authentication.issuer}")
-    lateinit var issuer: String
-
-    @field:Value("\${authentication.access-token-ttl}")
-    lateinit var accessTokenTll: String
-
-    @field:Value("\${authentication.access-token-secret}")
-    lateinit var accessTokenSecret: String
-
     @Autowired
     lateinit var mapper: ObjectMapper
+
+    @Autowired
+    lateinit var projectRepository: ProjectRepository
 
     @BeforeAll
     fun before() {
@@ -46,5 +40,6 @@ class IntegrationTest {
 
     @BeforeEach
     fun beforeEach() {
+        projectRepository.deleteAll()
     }
 }

@@ -1,4 +1,9 @@
 ---
 spring:
   application:
-    name: nervapi
+    name: nerv-api
+  datasource:
+    url: jdbc:tc:postgresql:15.3:///test_database
+  web:
+    locale: en_US
+    locale-resolver: fixed

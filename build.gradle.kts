@@ -1,7 +1,7 @@
 plugins {
     kotlin("jvm") version "2.2.21"
     kotlin("plugin.spring") version "2.2.21"
-    id("org.springframework.boot") version "4.0.0"
+    id("org.springframework.boot") version "3.5.7"
     id("io.spring.dependency-management") version "1.1.7"
     id("jacoco")
     id("org.jlleitschuh.gradle.ktlint") version "13.0.0"
@@ -32,19 +32,27 @@ jacoco {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("net.logstash.logback:logstash-logback-encoder:9.0")
-    implementation("ch.qos.logback:logback-classic:1.5.22")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("io.micrometer:micrometer-registry-prometheus")
+    implementation("io.azam.ulidj:ulidj:1.0.1")
+    implementation("org.postgresql:postgresql")
+    implementation("org.flywaydb:flyway-core")
+    implementation("org.flywaydb:flyway-database-postgresql")
 
-    testImplementation("org.mock-server:mockserver-netty-no-dependencies:5.15.0")
-    testImplementation("org.mock-server:mockserver-client-java-no-dependencies:5.15.0") {
-        exclude("org.sl4j", "slf4j-jdk14")
+    testImplementation("org.mock-server:mockserver-netty:5.15.0") {
+        exclude(group = "org.slf4j", module = "slf4j-jdk14")
+    }
+    testImplementation("org.mock-server:mockserver-client-java:5.15.0") {
+        exclude(group = "org.slf4j", module = "slf4j-jdk14")
     }
     testImplementation("io.rest-assured:rest-assured:5.5.6")
-    testImplementation("org.testcontainers:junit-jupiter:1.21.3")
+    testImplementation("org.testcontainers:junit-jupiter")
+    testImplementation("org.testcontainers:postgresql")
     testImplementation("io.mockk:mockk:1.14.6")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")

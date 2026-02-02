@@ -2,7 +2,7 @@ package com.kaiqkt.nervapi.unit.application.web.handlers
 
 import com.kaiqkt.nervapi.application.exceptions.InvalidRequestException
 import com.kaiqkt.nervapi.application.web.handlers.ErrorHandler
-import com.kaiqkt.nervapi.application.web.responses.ErrorV1
+import com.kaiqkt.nervapi.application.web.responses.ErrorResponse
 import com.kaiqkt.nervapi.domain.exceptions.DomainException
 import com.kaiqkt.nervapi.domain.exceptions.ErrorType
 import io.mockk.every
@@ -63,7 +63,7 @@ class ErrorHandlerTest {
                 HttpHeaders(),
                 HttpStatus.BAD_REQUEST,
                 webRequest,
-            ) as ResponseEntity<ErrorV1>
+            ) as ResponseEntity<ErrorResponse>
 
         assertEquals(HttpStatus.BAD_REQUEST, response.statusCode)
         assertEquals("defaultMessage", response.body?.details?.get("field"))
@@ -87,7 +87,7 @@ class ErrorHandlerTest {
                 HttpHeaders(),
                 HttpStatus.BAD_REQUEST,
                 webRequest,
-            ) as ResponseEntity<ErrorV1>
+            ) as ResponseEntity<ErrorResponse>
 
         assertEquals(HttpStatus.BAD_REQUEST, response.statusCode)
         assertEquals("invalid", response.body?.details?.get("field"))

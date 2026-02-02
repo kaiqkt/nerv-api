@@ -1,6 +1,6 @@
 package com.kaiqkt.nervapi.application.web.responses
 
-data class ErrorV1(
+data class ErrorResponse(
     val type: String,
     val message: String?,
     val details: Map<String, Any>,
