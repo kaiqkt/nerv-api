@@ -7,6 +7,7 @@ import com.kaiqkt.nervapi.domain.repositories.ProjectRepository
 import com.kaiqkt.nervapi.domain.utils.Constants
 import com.kaiqkt.nervapi.domain.utils.MetricsUtils
 import org.springframework.stereotype.Service
+import kotlin.jvm.optionals.getOrNull
 
 @Service
 class ProjectService(
@@ -15,16 +16,31 @@ class ProjectService(
 ) {
     fun create(project: Project): Project {
         if (projectRepository.existsByName(project.name)) {
-            metricsUtils.counter(PROJECT_CREATE_METRIC, Constants.Metrics.STATUS, Constants.Metrics.CONFLICT)
+            metricsUtils.counter(
+                PROJECT_METRIC,
+                Constants.Metrics.ACTION,
+                Constants.Metrics.CREATE,
+                Constants.Metrics.STATUS,
+                Constants.Metrics.CONFLICT,
+            )
             throw DomainException(ErrorType.PROJECT_NAME_CONFLICT)
         }
 
         return projectRepository.save(project).also {
-            metricsUtils.counter(PROJECT_CREATE_METRIC, Constants.Metrics.STATUS, Constants.Metrics.CREATED)
+            metricsUtils.counter(
+                PROJECT_METRIC,
+                Constants.Metrics.ACTION,
+                Constants.Metrics.CREATE,
+                Constants.Metrics.STATUS,
+                Constants.Metrics.SUCCESS,
+            )
         }
     }
 
+    fun findById(projectId: String): Project =
+        projectRepository.findById(projectId).getOrNull() ?: throw DomainException(ErrorType.PROJECT_NOT_FOUND)
+
     companion object {
-        const val PROJECT_CREATE_METRIC = "project_create"
+        private const val PROJECT_METRIC = "project"
     }
 }

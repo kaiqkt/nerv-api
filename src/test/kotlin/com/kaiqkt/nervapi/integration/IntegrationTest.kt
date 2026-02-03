@@ -2,6 +2,7 @@ package com.kaiqkt.nervapi.integration
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.kaiqkt.nervapi.domain.repositories.ProjectRepository
+import com.kaiqkt.nervapi.domain.repositories.ServerRepository
 import io.restassured.RestAssured
 import io.restassured.config.ObjectMapperConfig
 import io.restassured.mapper.ObjectMapperType
@@ -26,6 +27,9 @@ class IntegrationTest {
     @Autowired
     lateinit var projectRepository: ProjectRepository
 
+    @Autowired
+    lateinit var serverRepository: ServerRepository
+
     @BeforeAll
     fun before() {
         RestAssured.config =
@@ -41,5 +45,6 @@ class IntegrationTest {
     @BeforeEach
     fun beforeEach() {
         projectRepository.deleteAll()
+        serverRepository.deleteAll()
     }
 }

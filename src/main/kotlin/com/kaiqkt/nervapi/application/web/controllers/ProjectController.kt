@@ -9,15 +9,13 @@ import jakarta.validation.Valid
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/v1/projects")
 class ProjectController(
     private val projectService: ProjectService,
 ) {
-    @PostMapping
+    @PostMapping("/v1/projects")
     fun create(
         @Valid @RequestBody request: ProjectRequest.CreateV1,
     ): ResponseEntity<ProjectResponse.V1> {

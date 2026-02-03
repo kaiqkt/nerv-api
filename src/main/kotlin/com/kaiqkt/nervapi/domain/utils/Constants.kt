@@ -10,8 +10,11 @@ object Constants {
 
     object Metrics {
         const val STATUS = "status"
+        const val ACTION = "action"
+        const val CREATE = "create"
         const val CONFLICT = "conflict"
-        const val CREATED = "created"
+        const val ERROR = "error"
+        const val SUCCESS = "success"
     }
 
     object Keys

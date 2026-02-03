@@ -61,7 +61,7 @@ class ProjectIntegrationTest : IntegrationTest() {
     }
 
     @Test
-    fun `given a project creation request when the request does not meet the minimum requirements should return an error`() {
+    fun `given a project creation request when the request does not meet the requirements should return an error`() {
         val request =
             ProjectRequest.CreateV1(
                 name = "",

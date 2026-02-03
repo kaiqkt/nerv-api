@@ -73,6 +73,8 @@ class ErrorHandler : ResponseEntityExceptionHandler() {
     private fun getStatusCode(type: ErrorType): HttpStatus =
         when (type) {
             ErrorType.PROJECT_NAME_CONFLICT -> HttpStatus.CONFLICT
+            ErrorType.PROJECT_NOT_FOUND -> HttpStatus.NOT_FOUND
+            ErrorType.AGENT_CONNECTION_ERROR -> HttpStatus.BAD_REQUEST
             else -> HttpStatus.NOT_IMPLEMENTED
         }
 }

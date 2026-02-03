@@ -43,6 +43,7 @@ dependencies {
     implementation("org.postgresql:postgresql")
     implementation("org.flywaydb:flyway-core")
     implementation("org.flywaydb:flyway-database-postgresql")
+    implementation("com.github.kittinunf.fuel:fuel:2.3.1")
 
     testImplementation("org.mock-server:mockserver-netty:5.15.0") {
         exclude(group = "org.slf4j", module = "slf4j-jdk14")
