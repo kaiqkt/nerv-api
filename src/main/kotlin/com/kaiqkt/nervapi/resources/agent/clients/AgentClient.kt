@@ -5,6 +5,7 @@ import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.core.isSuccessful
 import com.kaiqkt.nervapi.domain.utils.Constants
 import com.kaiqkt.nervapi.domain.utils.MetricsUtils
+import org.springframework.http.HttpHeaders
 import org.springframework.stereotype.Component
 
 @Component
@@ -19,7 +20,7 @@ class AgentClient(
                     .get("$url/health")
                     .header(
                         mapOf(
-                            "Content-Type" to "application/json",
+                            HttpHeaders.CONTENT_TYPE to "application/json",
                             "X-Request-Id" to Constants.Parameters.requestId,
                         ),
                     ).response()
